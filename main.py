@@ -52,7 +52,7 @@ root_md="<|menu|label=SpaceMan|lov={[('Page-1', 'Birthday Astronomy'), ('Page-2'
 #Astonomy photo of the day-----------------------------------------------------------------------------------------------------------
 page1_md= """
 # Birthday Astronomy
-
+*Find out what astronomy picture was posted by NASA the same day you came into this world!!!*
 
 
 **<|{title}|>**
@@ -114,7 +114,7 @@ def on_button_action(state):
         state.title = "Error: Please enter a date in the YYYY-MM-DD format."
         state.date = ''
         state.explanation = ''
-        state.p = 'tryagain.png'
+        state.p = 'imgs/tryagain.png'
 
 
 def on_change(state, var_name, var_value):
@@ -124,7 +124,7 @@ def on_change(state, var_name, var_value):
    
 
 x  = ''
-p  = ''#call_APOD("photo",birth)
+p  = 'imgs/telescope.jpg'#call_APOD("photo",birth)
 title = ''
 date = ''
 explanation = ''
