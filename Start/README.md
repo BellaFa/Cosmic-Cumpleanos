@@ -3,6 +3,6 @@
 
 You enter the venue and find lots of places to check out.
 
-1. Check out the right hacker rooms
-2. Check out the left hacker rooms
-3. Go upstairs
+1. [Check out the right hacker rooms](https://github.com/BellaFa/BellaFa.github.io/tree/adventure-test/Start/Right)
+2. [Check out the left hacker rooms](https://github.com/BellaFa/BellaFa.github.io/tree/adventure-test/Start/Left)
+3. [Go upstairs]
