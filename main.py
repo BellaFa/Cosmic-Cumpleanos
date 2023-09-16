@@ -28,10 +28,12 @@ def call_APOD(type,date='2020-09-18'):
         if(type == "allInfo"):
             data = [apod_data['title'], apod_data['date'], apod_data['explanation']]
             return data
-        if(type == "photo"): return apod_data['url']
+        if(type == "photo"):
+            return apod_data['url']
         
     else:
         print(f"Request failed with status code: {response.status_code}")
+        return "oof"
     
 #API request DONKI Coronal Mass Ejection
 def call_DONKI_CME(type, startDate='2020-09-18', endDate='2020-09-18'):
@@ -121,11 +123,14 @@ x  = ''
 p  = ''#call_APOD("photo",birth)
 plan1 = "plan1.png"
 
-
-# terrible magic numbers but i'm desperate
-title = ''
-date = ''
-explanation = ''
+# Error handling when user inputs incorrect date format
+if (x != "oof"):
+    # terrible magic numbers but i'm desperate
+    title = x[0]
+    date = x[1]
+    explanation = x[2]
+else:
+    title = "Error: Please enter a date in the YYYY-MM-DD format."
 
 
 
