@@ -111,7 +111,7 @@ def on_button_action(state):
         state.explanation = state.x[2]
         state.p = call_APOD("photo",state.text)
     else:
-        state.title = "Error: Please enter a date in the YYYY-MM-DD format."
+        state.title = "Error: Please enter a date in the YYYY-MM-DD format and no earlier than 1995-06-16."
         state.date = ''
         state.explanation = ''
         state.p = 'imgs/tryagain.png'
