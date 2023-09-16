@@ -1,8 +1,9 @@
 # package imports taipy
 from taipy.gui import Gui, notify, navigate, Html, State
+import dateutil.parser
 
 # pages imports
-from pages.pageOne import page1_md
+#from pages.pageOne import page1_md
 from pages.pageTwo import page2_md
 
 #API
@@ -12,9 +13,9 @@ api_key = 'bCktnBQ9LJKx8ReMeg5UFrVeOGRUivobfFVX86G9'
 
 
 # API request APOD
-def call_APOD(type,date='2023-09-10'):
+def call_APOD(type,date='2020-09-18'):
 
-    date= '2023-09-10'
+   
     url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}&date={date}'
     # Make the API request
     response = requests.get(url)
@@ -37,9 +38,15 @@ root_md="<|menu|label=SpaceMan|lov={[('Page-1', 'Photo of the Day'), ('Page-2', 
 page1_md= """
 # Photo of the Day
 
+
+
 Value of x: <|{x}|>
 
 <|{p}|image|label=this is an image|on_action=function_name|>
+
+My text: <|{text}|>
+
+<|{text}|input|>
 
 """
 
@@ -63,8 +70,10 @@ pages = {
 
 
 # Astronomy Picture of the Day uncomment 
+birth = '2023-4-7'
 x  = call_APOD("allInfo")
-p  = call_APOD("photo")
+p  = call_APOD("photo",birth)
+
 
 
 
@@ -79,6 +88,13 @@ def on_status(state: State):
     return {
         "p": state.p,
         "info": "Some information..."
+    }
+
+# input birthdate 
+def on_status(state: State):
+    return{
+        "birth": state.birth,   
+         "info": "Some information..."
     }
 
 
