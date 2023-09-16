@@ -8,6 +8,7 @@ from pages.pageTwo import page2_md
 
 #API
 import requests
+import json
 
 api_key = 'bCktnBQ9LJKx8ReMeg5UFrVeOGRUivobfFVX86G9'
 
@@ -23,12 +24,14 @@ def call_APOD(type,date='2020-09-18'):
     if response.status_code == 200:
         apod_data = response.json()
         # Now, you can access various APOD data fields
-        if(type == "allInfo"):response = f"Title: {apod_data['title']}" + f"Date: {apod_data['date']}" + f"Explanation: {apod_data['explanation']}"
-        if(type == "photo"):response = apod_data['url']
+        # if(type == "allInfo"): return f"Title: {apod_data['title']}" + f"Date: {apod_data['date']}" + f"Explanation: {apod_data['explanation']}"
+        if(type == "allInfo"):
+            data = [apod_data['title'], apod_data['date'], apod_data['explanation']]
+            return data
+        if(type == "photo"): return apod_data['url']
         
     else:
         print(f"Request failed with status code: {response.status_code}")
-    return response
     
 
 #root menu -----------------------------------------------------------------------------------------------------------
@@ -40,7 +43,11 @@ page1_md= """
 
 
 
-Value of x: <|{x}|>
+**<|{title}|>**
+
+<|{date}|>
+
+<|{explanation}|>
 
 <|{p}|image|label=this is an image|on_action=function_name|>
 
@@ -74,6 +81,10 @@ birth = '2023-4-7'
 x  = call_APOD("allInfo")
 p  = call_APOD("photo",birth)
 
+# terrible magic numbers but i'm desperate
+title = x[0]
+date = x[1]
+explanation = x[2]
 
 
 
