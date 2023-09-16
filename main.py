@@ -9,12 +9,13 @@ from pages.pageTwo import page2_md
 import requests
 
 api_key = 'bCktnBQ9LJKx8ReMeg5UFrVeOGRUivobfFVX86G9'
-url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}'
+
 
 # API request APOD
-def call_APOD(type):
-    print("callLLLLLLLLLLLLLLLLLLLLLLLLL")
-    return  "Title: Fireball over IcelandDate: 2023-09-16Explanation: On September 12, from a location just south of the Arctic Circle, stones of Iceland's modern Arctic Henge point skyward in this startling scene. Entertaining an intrepid group of aurora hunters during a geomagnetic storm, alluring northern lights dance across the darkened sky when a stunning fireball meteor explodes. Awestruck, the camera-equipped skygazers captured video and still images of the boreal bolide, at its peak about as bright as a full moon. Though quickly fading from view, the fireball left a lingering visible trail or persistent train. The wraith-like trail was seen for minutes wafting in the upper atmosphere at altitudes of 60 to 90 kilometers along with the auroral glow.Image URL: https://apod.nasa.gov/apod/image/2309/_DSC7280-1s_1024.jpg"
+def call_APOD(type,date='2023-09-10'):
+
+    date= '2023-09-10'
+    url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}&date={date}'
     # Make the API request
     response = requests.get(url)
 
@@ -22,10 +23,11 @@ def call_APOD(type):
         apod_data = response.json()
         # Now, you can access various APOD data fields
         if(type == "allInfo"):response = f"Title: {apod_data['title']}" + f"Date: {apod_data['date']}" + f"Explanation: {apod_data['explanation']}"
-        if(type == "photo"):response = f"Image URL: {apod_data['url']}"
+        if(type == "photo"):response = apod_data['url']
         
     else:
         print(f"Request failed with status code: {response.status_code}")
+    return response
     
 
 #root menu -----------------------------------------------------------------------------------------------------------
@@ -33,20 +35,20 @@ root_md="<|menu|label=SpaceMan|lov={[('Page-1', 'Photo of the Day'), ('Page-2', 
 
 #Astonomy photo of the day-----------------------------------------------------------------------------------------------------------
 page1_md= """
-# Photo of the Day  
+# Photo of the Day
 
 Value of x: <|{x}|>
 
-<|{pe}|image|label=this is an image|on_action=function_name|>
+<|{p}|image|label=this is an image|on_action=function_name|>
 
 """
 
 #not available-----------------------------------------------------------------------------------------------------------
-page2_md= page2_md
+page2_md= """#graph"""
 
 
 # menu navigation
-def on_menu(state, var_name, function_name, info):
+def on_menu(state, var_name, info):
     page = info['args'][0]
     navigate(state, to=page)
    
@@ -60,9 +62,10 @@ pages = {
 
 
 
-# Astronomy Picture of the Day
+# Astronomy Picture of the Day uncomment 
 x  = call_APOD("allInfo")
 p  = call_APOD("photo")
+
 
 
 # Use State for Picture of the day Info
