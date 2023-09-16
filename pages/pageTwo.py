@@ -14,10 +14,12 @@ page2_md= Html("""
             background-color: rgba(0, 0, 255, 0.5); /* Set the background color to blue with 50% opacity */
             
     </style>
+<head>
+    <title>Display Image from URL</title>
 </head>
- <body>
-
-    <div>Pagehkkkhkh2</div>
+<body>
+    <h1>Image from URL</h1>
+    <img src="https://apod.nasa.gov/apod/image/2309/_DSC7280-1s_1024.jpg" alt="Image Description"></img>
 </body>
                
 """)
