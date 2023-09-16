@@ -33,6 +33,16 @@ def call_APOD(type,date='2020-09-18'):
     else:
         print(f"Request failed with status code: {response.status_code}")
     
+#API request DONKI Coronal Mass Ejection
+def call_DONKI_CME(type, startDate='2020-09-18', endDate='2020-09-18'):
+    url = f'https://api.nasa.gov/DONKI/CME?startDate={startDate}&endDate={endDate}&api_key={api_key}'
+    # Make the API request
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        donki_data = response.json()
+        # Now, you can access DONKI CME data fields
+        data = [donki_data['activityID'], donki_data['catalog'], donki_data['startTime'], donki_data['sourceLocation'], donki_data['activeRegionNum'], donki_data['note']]
 
 #root menu -----------------------------------------------------------------------------------------------------------
 root_md="<|menu|label=SpaceMan|lov={[('Page-1', 'Photo of the Day'), ('Page-2', 'Graph')]}|on_action=on_menu|>"
