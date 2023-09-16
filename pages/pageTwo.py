@@ -1,6 +1,8 @@
 from taipy.gui import Html
 
 
+
+
 page2_md= Html("""
 
 <head>
@@ -15,7 +17,13 @@ page2_md= Html("""
 </head>
  <body>
 
-    <div>Page2</div>
+    <div>Pagehkkkhkh2</div>
 </body>
                
 """)
+               
+
+eh = """
+My text: <|{text}|>
+
+<|{text}|input|>"""
