@@ -126,9 +126,9 @@ plan1 = "plan1.png"
 # Error handling when user inputs incorrect date format
 if (x != "oof"):
     # terrible magic numbers but i'm desperate
-    title = x[0]
-    date = x[1]
-    explanation = x[2]
+    title = ''
+    date = ''
+    explanation = ''
 else:
     title = "Error: Please enter a date in the YYYY-MM-DD format."
 
