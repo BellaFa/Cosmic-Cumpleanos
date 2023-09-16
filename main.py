@@ -40,13 +40,15 @@ page1_md= """
 
 
 
-Value of x: <|{x}|>
+<|{x}|>
 
-<|{p}|image|label=this is an image|on_action=function_name|>
+<|{p}|image|label=Astronomy Image|> 
 
-My text: <|{text}|>
+Birthday: <|{text}|>
 
 <|{text}|input|>
+
+<|Submit|button|on_action=on_button_action|>
 
 """
 
@@ -71,12 +73,39 @@ pages = {
 
 # Astronomy Picture of the Day uncomment 
 birth = '2023-4-7'
-x  = call_APOD("allInfo")
-p  = call_APOD("photo",birth)
+text = ''
+def valid_date(state: State):
+    print(state.text)
+    date = dateutil.parser.parse(state.text)
+    print(date)
+    text=date
+    #on_statusBirth(state)
+
+def on_button_action(state):
+    #date = dateutil.parser.parse(state.text)
+    notify(state, 'info', f'APOD The date is: {state.text}')
+    state.text = state.text
+    state.x  = call_APOD("allInfo",state.text)
+    state.p= call_APOD("photo",state.text)
+
+def on_change(state, var_name, var_value):
+    if var_name == "text" and var_value == "Reset":
+        state.text = ""
+        return
+   
+       
+
+x  = ''
+p  = ''#call_APOD("photo",birth)
 
 
 
-
+# Use State for Picture of the day Info
+#def on_statusBirth(state: State):
+  #  return {
+   #     "text": state.text,
+   #     "info": "Some information..."
+   # }
 # Use State for Picture of the day Info
 def on_status(state: State):
     return {
