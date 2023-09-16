@@ -109,9 +109,12 @@ def on_button_action(state):
         state.title = state.x[0]
         state.date = state.x[1]
         state.explanation = state.x[2]
+        state.p = call_APOD("photo",state.text)
     else:
         state.title = "Error: Please enter a date in the YYYY-MM-DD format."
-    state.p = call_APOD("photo",state.text)
+        state.date = ''
+        state.explanation = ''
+        state.p = 'tryagain.png'
 
 
 def on_change(state, var_name, var_value):
@@ -122,7 +125,9 @@ def on_change(state, var_name, var_value):
 
 x  = ''
 p  = ''#call_APOD("photo",birth)
-
+title = ''
+date = ''
+explanation = ''
 
 
 
