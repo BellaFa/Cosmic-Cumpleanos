@@ -106,31 +106,30 @@ def on_button_action(state):
     #date = dateutil.parser.parse(state.text)
     notify(state, 'info', f'APOD The date is: {state.text}')
     state.text = state.text
-    state.x  = call_APOD("allInfo",state.text)
-    state.title = state.x[0]
-    state.date = state.x[1]
-    state.explanation = state.x[2]
-    state.p= call_APOD("photo",state.text)
+    state.x = call_APOD("allInfo",state.text)
+    if (state.x != 'oof'):
+        state.title = state.x[0]
+        state.date = state.x[1]
+        state.explanation = state.x[2]
+        state.p = call_APOD("photo",state.text)
+    else:
+        state.title = "Error: Please enter a date in the YYYY-MM-DD format."
+        state.date = ''
+        state.explanation = ''
+        state.p = 'tryagain.png'
+
 
 def on_change(state, var_name, var_value):
     if var_name == "text" and var_value == "Reset":
         state.text = ""
         return
    
-       
 
 x  = ''
 p  = ''#call_APOD("photo",birth)
-plan1 = "plan1.png"
-
-# Error handling when user inputs incorrect date format
-if (x != "oof"):
-    # terrible magic numbers but i'm desperate
-    title = ''
-    date = ''
-    explanation = ''
-else:
-    title = "Error: Please enter a date in the YYYY-MM-DD format."
+title = ''
+date = ''
+explanation = ''
 
 
 
