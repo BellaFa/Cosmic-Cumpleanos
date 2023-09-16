@@ -49,7 +49,7 @@ root_md="<|menu|label=SpaceMan|lov={[('Page-1', 'Birthday Astronomy'), ('Page-2'
 
 #Astonomy photo of the day-----------------------------------------------------------------------------------------------------------
 page1_md= """
-# Birthday Astronomy
+# Birthday Astronomy 
 
 
 
@@ -59,9 +59,9 @@ page1_md= """
 
 <|{explanation}|>
 
-<|{p}|image|label=Astronomy Image|> 
+<|{p}|image|> 
 
-Birthday: <|{text}|>
+Birthday Y-MM-DD: <|{text}|>
 
 <|{text}|input|>
 
@@ -79,6 +79,8 @@ def on_menu(state, var_name, info):
     navigate(state, to=page)
    
 # Different Tabs   
+
+
 pages = {
     "/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
     "/": root_md,
@@ -117,6 +119,7 @@ def on_change(state, var_name, var_value):
 
 x  = ''
 p  = ''#call_APOD("photo",birth)
+plan1 = "plan1.png"
 
 
 # terrible magic numbers but i'm desperate
