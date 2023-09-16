@@ -1,10 +1,12 @@
 # package imports taipy
+import base64
+from io import BytesIO
+from flask import render_template
 from taipy.gui import Gui, notify, navigate, Html, State
 import dateutil.parser
+import matplotlib.pyplot as plt
 
-# pages imports
-#from pages.pageOne import page1_md
-from pages.pageTwo import page2_md
+
 
 #API
 import requests
@@ -47,7 +49,7 @@ def call_DONKI_CME(type, startDate='2020-09-18', endDate='2020-09-18'):
         data = [donki_data['activityID'], donki_data['catalog'], donki_data['startTime'], donki_data['sourceLocation'], donki_data['activeRegionNum'], donki_data['note']]
 
 #root menu -----------------------------------------------------------------------------------------------------------
-root_md="<|menu|label=SpaceMan|lov={[('Page-1', 'Birthday Astronomy'), ('Page-2', 'Graph')]}|on_action=on_menu|>"
+root_md="<|navbar|>"
 
 #Astonomy photo of the day-----------------------------------------------------------------------------------------------------------
 page1_md= """
@@ -72,7 +74,17 @@ Birthday Y-MM-DD: <|{text}|>
 """
 
 #not available-----------------------------------------------------------------------------------------------------------
-page2_md= """#graph"""
+page2_md = """
+<|You would not believe your eyes if ten million fireflys beep beep beeop bop bop be bop be|button|on_action=get_disaster|center|>
+<|Slider|>
+
+"""
+
+ 
+
+
+
+
 
 
 # menu navigation
@@ -86,8 +98,9 @@ def on_menu(state, var_name, info):
 pages = {
     "/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
     "/": root_md,
-    "Page-1": page1_md,
-    "Page-2": page2_md,
+    "Birthday-Astronomy": page1_md,
+    "Graph": page2_md
+    
 }
 
 
