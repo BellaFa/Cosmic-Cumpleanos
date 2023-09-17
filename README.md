@@ -1,4 +1,4 @@
-# Birthday Astronomy takes your birthday and finds cool space images that reflect on that day, and on who you are.
+# Cosmic Cumpleanos celebrates your birthday by finding cool space images that reflect on that day, and on who you are.
 
 Built with Taipy and NASA's Astronomy Picture of the Day API.
 
