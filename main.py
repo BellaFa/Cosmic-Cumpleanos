@@ -53,8 +53,8 @@ root_md="<|navbar|>"
 
 #Astonomy photo of the day-----------------------------------------------------------------------------------------------------------
 page1_md= """
-# Birthday Astronomy
-*Find out what astronomy picture was posted by NASA the same day you came into this world!!!*
+# Cosmic Cumpleanos
+*Find out what astronomy picture reflects on your life.*
 
 
 **<|{title}|>**
@@ -65,7 +65,7 @@ page1_md= """
 
 <|{p}|image|> 
 
-Birthday Y-MM-DD: <|{text}|>
+Birthday YYYY-MM-DD: <|{text}|>
 
 <|{text}|input|>
 
