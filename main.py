@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import requests
 import json
 
-api_key = 'bCktnBQ9LJKx8ReMeg5UFrVeOGRUivobfFVX86G9'
+api_key = ''
 
 
 # API request APOD
